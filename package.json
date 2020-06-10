@@ -1,7 +1,8 @@
 {
-  "name": "print-example",
+  "name": "cra-template-iex2-tmpl-musterbiespiel",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "main": "template.json",
   "dependencies": {
     "@stacknvault/iex2-core": "^1.2.11",
     "emotion": "^10.0.27",
@@ -12,12 +13,36 @@
     "react-markdown": "^4.3.1",
     "react-scripts": "3.4.1"
   },
+  "files": [
+    "template",
+    "template.json"
+  ],
+  "keywords": [
+    "react",
+    "cra-template",
+    "iex",
+    "flowfact"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danieledwardkim/cra-template-iex2-tmpl-musterbiespiel",
+    "directory": "/"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "latest",
+    "access": "public"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://iex2-template-example2 --acl public-read",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "expose": "node node_modules/@stacknvault/iex2-core/scripts/expose.js"
+    "expose": "node node_modules/@stacknvault/iex2-core/scripts/expose.js",
+    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public",
+    "prepublishOnly": "yarn clean-files && yarn copy-files"
   },
   "eslintConfig": {
     "extends": "react-app"
