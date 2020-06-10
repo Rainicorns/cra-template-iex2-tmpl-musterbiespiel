@@ -1,6 +1,6 @@
 {
   "name": "cra-template-iex2-tmpl-musterbiespiel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "main": "template.json",
   "dependencies": {
@@ -40,7 +40,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "expose": "node node_modules/@stacknvault/iex2-core/scripts/expose.js",
-    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc",
+    "clean-files": "rm -rf ./template/public ./template/src && cp .gitignore template/gitignore",
     "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public",
     "prepublishOnly": "yarn clean-files && yarn copy-files"
   },

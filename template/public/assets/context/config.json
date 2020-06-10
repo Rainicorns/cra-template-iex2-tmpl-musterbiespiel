@@ -1,5 +1,0 @@
-{
-    "excludes": [
-        {"fieldName": "entity.addresses", "minStage": 2}
-    ]
-}
