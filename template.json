@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@material-ui/core": "^4.10.1",
+    "@material-ui/icons": "^4.9.1",
     "@stacknvault/iex2-core": "^1.2.11",
     "emotion": "^10.0.27",
     "jsonpath": "^1.0.2",
@@ -7,7 +9,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-markdown": "^4.3.1",
-    "react-scripts": "3.4.1"
+    "react-mustache": "^0.1.5",
+    "react-scripts": "^3.4.1"
   },
   "scripts": {
     "expose": "node node_modules/@stacknvault/iex2-core/scripts/expose.js"

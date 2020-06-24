@@ -5,7 +5,7 @@ import Footer from '../Footer/Footer';
 import { css } from 'emotion';
 import { basetheme } from '../../styles/IEXTheme'
 
-export default function Page({ theme, className, title, withMargin, children }) {
+export default function Page({ theme, className, title, withMargin, backgroundComp, children }) {
     const mytheme = theme ? theme : basetheme;
 
     function renderTitle(title) {
@@ -22,6 +22,7 @@ export default function Page({ theme, className, title, withMargin, children }) 
             background-color: ${mytheme.brand.colors.background};
             color: ${mytheme.brand.colors.baseText};
         `}>
+            {backgroundComp && backgroundComp}
             <Header theme={theme} />
             <div className={`content ${className}`}>
                 {withMargin ?

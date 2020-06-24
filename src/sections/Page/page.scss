@@ -12,6 +12,7 @@
         grid-area: header;
         // background-color: red;
         overflow: hidden;
+        z-index: 100;
     }
     .content {
         grid-area: content;
@@ -26,5 +27,6 @@
     }
     .footerWrapper {
         grid-area: footer;
+        z-index: 100;
     }
 }

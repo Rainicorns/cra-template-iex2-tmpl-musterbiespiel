@@ -11,12 +11,18 @@ import PicturePages from './sections/PicturePages/PicturePages';
 import FloorPlans from './sections/FloorPlans/FloorPlans';
 import AgentDetail from './sections/AgentDetail/AgentDetail';
 import Fact from './sections/FactSheet/Fact';
+import ContractAgreement from './sections/ContractAgreement/ContractAgreement';
 
 function Expose() {
-  
+
   return (
     <>
       <Stage level="0">
+        <ContractAgreement theme={theme} contracts={ffmap`company.legislationTexts`} imgObj={ffmap`entity.mainImage`}>
+          {ffmap`company.companyStreet`}
+        </ContractAgreement>
+      </Stage>
+      <Stage level="1">
         <FrontCover theme={theme} title={ffmap`entity.headline`} imgObj={ffmap`entity.mainImage`}></FrontCover>
         <FactSheet title="Wichtiges auf einen Blick" theme={theme}>
           <Fact theme={theme} label="Objekttyp" value="Doppelhaushälfte" />

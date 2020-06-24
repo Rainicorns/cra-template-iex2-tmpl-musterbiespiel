@@ -9,6 +9,13 @@ const Context = ({ children }) => {
     const [error, setError] = useState(null);
     const [config, setConfig] = useState(false);
 
+    // hacky hack hack
+    function _setStageHack(val) {
+        const newIex = {...iex}
+        newIex.currentStage++;
+        setIEX(newIex);
+    }
+
     const jsonify = res => res.json();
     const reportError = error => { setError("" + error) };
     const fetchContext = () => {
@@ -31,7 +38,7 @@ const Context = ({ children }) => {
     if (!ready) {
         return <></>
     }
-    return <ContextStore.Provider value={{ iex, config, ready, error }}>{children}</ContextStore.Provider>
+    return <ContextStore.Provider value={{ iex, config, ready, error, _setStageHack }}>{children}</ContextStore.Provider>
 }
 
 const Stage = ({ level, children }) => {
@@ -45,28 +52,29 @@ const Stage = ({ level, children }) => {
 
 const ffmap = (strings, ...values) => {
     const iex = ContextStore._currentValue.iex;
-    // console.log("Path : ",strings[0])
+    // console.log("Path : ",strings[0], iex)
     function q(jpath) {
         return jp.query(iex.context, jpath);
     }
     try {
         // try first with weird FF blah.values array
-        let answer = q(`$.${strings[0]}.values`)[0];
-        // console.log("Answer : ",answer)
+        let answer = q(`$.${strings[0]}.values`);
+        // console.log("Answer with .values: ",answer)
+        answer = answer[0];
 
         // undue the weird everything is a value array in FF
         if (Array.isArray(answer) && answer.length === 1) {
             // console.log("Unwrapping Array : ",answer[0]);
             answer = answer[0];
         }
-        // console.log("answer : ",answer);
-        if (answer) {
+        // console.log("Answer and typeof : ",answer, typeof answer);
+        if (answer && typeof answer !== 'function') {
             return answer;
         } else {
             // console.log("What is it's a normal object????!?!!?");
             // okay entities have weird value arrays but sender obj doesn't!!!!
             answer = q(`$.${strings[0]}`)[0];
-            // console.log("answer : ",answer);
+            // console.log("Answer without .value: ",answer);
             if (answer) {
                 return answer;
             }

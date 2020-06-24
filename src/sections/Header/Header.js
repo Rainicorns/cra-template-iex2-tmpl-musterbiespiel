@@ -4,10 +4,10 @@ import { css } from 'emotion';
 import { basetheme } from '../../styles/IEXTheme'
 
 
-export default function Header({theme}) {
+export default function Header({theme, className}) {
     const mytheme = theme ? theme : basetheme;
     return (
-        <div className="logo header">
+        <div className={`logo header ${className}`}>
             <div className={"shield "+css`
                  background-color: ${mytheme.brand.colors.primary};
                  color: ${mytheme.brand.colors.primaryText};
